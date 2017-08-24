@@ -1,0 +1,4 @@
+1.0.0
+- Simple infrastructure on AWS with terraform
+  - 3 EC2
+  - 1 Security Group
