@@ -2,3 +2,6 @@
 - Simple infrastructure on AWS with terraform
   - 3 EC2
   - 1 Security Group
+
+1.1.0
+- Installed ansible
