@@ -13,3 +13,7 @@
 3.0.0
 - Move variables to the separate file
 - Add lookup for amis
+
+4.0.0
+- Back to 4 nodes
+- Provision is almost done
