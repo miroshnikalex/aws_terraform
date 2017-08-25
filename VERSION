@@ -9,3 +9,7 @@
 2.0.0
 - Using variables
 - Decrease to one EC2 for testing
+
+3.0.0
+- Move variables to the separate file
+- Add lookup for amis
