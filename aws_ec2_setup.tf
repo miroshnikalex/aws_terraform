@@ -27,7 +27,7 @@ provisioner "remote-exec" {
     "sudo yum clean all",
     "sudo yum install ansible vim mc -y",
     "sudo yum update -y",
-    "sudo useradd ansible-user -p${var.ANSIBLE_PASSWORD}",
+    "sudo useradd -d /home/ansible-user -m -p $(echo '${var.ANSIBLE_PASSWORD_PLAIN}' | openssl passwd -1 -stdin) ansible-user",
     "sudo sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config",
     "sudo sed -i 's/#   StrictHostKeyChecking ask/StrictHostKeyChecking no/g' /etc/ssh/ssh_config",
     "sudo systemctl reload sshd",
@@ -40,9 +40,9 @@ provisioner "remote-exec" {
     "sudo -u ansible-user ssh-keygen -t rsa -b 4096 -N '' -f /home/ansible-user/.ssh/ansible-key",
     "sudo -u ansible-user chmod 644 /home/ansible-user/.ssh/ansible-key.pub",
     "sudo -u ansible-user chmod 600 /home/ansible-user/.ssh/ansible-key",
-    "sudo -u ansible-user ssh-copy-id -i /home/ansible-user/.ssh/ansible-user.pub ${aws_instance.ansible-node1.private_ip}",
-    "sudo -u ansible-user ssh-copy-id -i /home/ansible-user/.ssh/ansible-user.pub ${aws_instance.ansible-node2.private_ip}",
-    "sudo -u ansible-user ssh-copy-id -i /home/ansible-user/.ssh/ansible-user.pub ${aws_instance.ansible-node3.private_ip}"
+    "sudo -u ansible-user sshpass -p ${var.ANSIBLE_PASSWORD_PLAIN} ssh-copy-id -i /home/ansible-user/.ssh/ansible-key.pub ${aws_instance.ansible-node1.private_ip}",
+    "sudo -u ansible-user sshpass -p ${var.ANSIBLE_PASSWORD_PLAIN} ssh-copy-id -i /home/ansible-user/.ssh/ansible-key.pub ${aws_instance.ansible-node2.private_ip}",
+    "sudo -u ansible-user sshpass -p ${var.ANSIBLE_PASSWORD_PLAIN} ssh-copy-id -i /home/ansible-user/.ssh/ansible-key.pub ${aws_instance.ansible-node3.private_ip}"
         ]
   connection {
     type = "ssh"
@@ -74,9 +74,9 @@ provisioner "remote-exec" {
   inline = [
     "sudo rpm -Uhv https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm",
     "sudo yum clean all",
-    "sudo yum install vim mc -y",
+    "sudo yum install ansible vim mc -y",
     "sudo yum update -y",
-    "sudo useradd ansible-user -p${var.ANSIBLE_PASSWORD}",
+    "sudo useradd -d /home/ansible-user -m -p $(echo '${var.ANSIBLE_PASSWORD_PLAIN}' | openssl passwd -1 -stdin) ansible-user",
     "sudo sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config",
     "sudo sed -i 's/#   StrictHostKeyChecking ask/StrictHostKeyChecking no/g' /etc/ssh/ssh_config",
     "sudo systemctl reload sshd",
@@ -120,9 +120,9 @@ provisioner "remote-exec" {
   inline = [
     "sudo rpm -Uhv https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm",
     "sudo yum clean all",
-    "sudo yum install vim mc -y",
+    "sudo yum install ansible vim mc -y",
     "sudo yum update -y",
-    "sudo useradd ansible-user -p${var.ANSIBLE_PASSWORD}",
+    "sudo useradd -d /home/ansible-user -m -p $(echo '${var.ANSIBLE_PASSWORD_PLAIN}' | openssl passwd -1 -stdin) ansible-user",
     "sudo sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config",
     "sudo sed -i 's/#   StrictHostKeyChecking ask/StrictHostKeyChecking no/g' /etc/ssh/ssh_config",
     "sudo systemctl reload sshd",
@@ -143,6 +143,7 @@ provisioner "remote-exec" {
     }
   }
 }
+
 
 resource "aws_instance" "ansible-node3" {
   ami           = "${lookup(var.AWS_AMI, var.AWS_REGION)}"
@@ -166,9 +167,9 @@ provisioner "remote-exec" {
   inline = [
     "sudo rpm -Uhv https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm",
     "sudo yum clean all",
-    "sudo yum install vim mc -y",
+    "sudo yum install ansible vim mc -y",
     "sudo yum update -y",
-    "sudo useradd ansible-user -p${var.ANSIBLE_PASSWORD}",
+    "sudo useradd -d /home/ansible-user -m -p $(echo '${var.ANSIBLE_PASSWORD_PLAIN}' | openssl passwd -1 -stdin) ansible-user",
     "sudo sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config",
     "sudo sed -i 's/#   StrictHostKeyChecking ask/StrictHostKeyChecking no/g' /etc/ssh/ssh_config",
     "sudo systemctl reload sshd",
@@ -181,7 +182,7 @@ provisioner "remote-exec" {
     "sudo -u ansible-user ssh-keygen -t rsa -b 4096 -N '' -f /home/ansible-user/.ssh/ansible-key",
     "sudo -u ansible-user chmod 644 /home/ansible-user/.ssh/ansible-key.pub",
     "sudo -u ansible-user chmod 600 /home/ansible-user/.ssh/ansible-key"
-        ]
+          ]
   connection {
     type = "ssh"
     user = "ec2-user"

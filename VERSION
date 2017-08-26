@@ -17,3 +17,6 @@
 4.0.0
 - Back to 4 nodes
 - Provision is almost done
+
+5.0.0
+- Public keys from Ansible control server were copied to the infrastructure servers

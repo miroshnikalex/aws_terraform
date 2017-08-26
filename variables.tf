@@ -1,5 +1,6 @@
 variable "ANSIBLE_USER" {}
-variable "ANSIBLE_PASSWORD" {}
+variable "ANSIBLE_PASSWORD_PLAIN" {}
+variable "ANSIBLE_PASSWORD_HASH" {}
 variable "AWS_REGION" {
   default = "eu-central-1"
 }
