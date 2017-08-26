@@ -25,7 +25,7 @@ provisioner "remote-exec" {
   inline = [
     "sudo rpm -Uhv https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm",
     "sudo yum clean all",
-    "sudo yum install ansible -y",
+    "sudo yum install ansible vim mc -y",
     "sudo yum update -y",
     "sudo useradd ansible-user -p ${var.ANSIBLE_PASSWORD}",
     "sudo sed -i 's/PermitRootLogin forced-commands-only/#PermitRootLogin forced-commands-only/g' /etc/ssh/sshd_config",
@@ -71,7 +71,7 @@ provisioner "remote-exec" {
   inline = [
     "sudo rpm -Uhv https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm",
     "sudo yum clean all",
-    "sudo yum install ansible -y",
+    "sudo yum install vim mc -y",
     "sudo yum update -y",
     "sudo useradd ansible-user -p ${var.ANSIBLE_PASSWORD}",
     "sudo sed -i 's/PermitRootLogin forced-commands-only/#PermitRootLogin forced-commands-only/g' /etc/ssh/sshd_config",
@@ -117,7 +117,7 @@ provisioner "remote-exec" {
   inline = [
     "sudo rpm -Uhv https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm",
     "sudo yum clean all",
-    "sudo yum install ansible -y",
+    "sudo yum install vim mc -y",
     "sudo yum update -y",
     "sudo useradd ansible-user -p ${var.ANSIBLE_PASSWORD}",
     "sudo sed -i 's/PermitRootLogin forced-commands-only/#PermitRootLogin forced-commands-only/g' /etc/ssh/sshd_config",
@@ -163,7 +163,7 @@ provisioner "remote-exec" {
   inline = [
     "sudo rpm -Uhv https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm",
     "sudo yum clean all",
-    "sudo yum install ansible -y",
+    "sudo yum install vim mc -y",
     "sudo yum update -y",
     "sudo useradd ansible-user -p ${var.ANSIBLE_PASSWORD}",
     "sudo sed -i 's/PermitRootLogin forced-commands-only/#PermitRootLogin forced-commands-only/g' /etc/ssh/sshd_config",
