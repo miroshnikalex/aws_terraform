@@ -18,7 +18,7 @@ provisioner "file" {
   connection {
     type = "ssh"
     user = "ec2-user"
-    private_key = "${file("~/terraform/.ssh/aws_ec2_Alex")}"
+    private_key = "${file(".ssh/aws_ec2_Alex")}"
     }
 }
 provisioner "remote-exec" {
@@ -28,8 +28,7 @@ provisioner "remote-exec" {
     "sudo yum install ansible vim mc -y",
     "sudo yum update -y",
     "sudo useradd ansible-user -p ${var.ANSIBLE_PASSWORD}",
-    "sudo sed -i 's/PermitRootLogin forced-commands-only/#PermitRootLogin forced-commands-only/g' /etc/ssh/sshd_config",
-    "sudo sed -i 's/#PermitRootLogin/PermitRootLogin/g' /etc/ssh/sshd_config",
+    "sudo sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config",
     "sudo systemctl reload sshd",
     "sudo cp /tmp/ansible-user-sudoers /etc/sudoers.d",
     "sudo chown root:root /etc/sudoers.d/ansible-user-sudoers",
@@ -44,7 +43,7 @@ provisioner "remote-exec" {
   connection {
     type = "ssh"
     user = "ec2-user"
-    private_key = "${file("~/terraform/.ssh/aws_ec2_Alex")}"
+    private_key = "${file(".ssh/aws_ec2_Alex")}"
     }
   }
 }
@@ -64,7 +63,7 @@ provisioner "file" {
   connection {
     type = "ssh"
     user = "ec2-user"
-    private_key = "${file("~/terraform/.ssh/aws_ec2_Alex")}"
+    private_key = "${file(".ssh/aws_ec2_Alex")}"
     }
 }
 provisioner "remote-exec" {
@@ -74,8 +73,7 @@ provisioner "remote-exec" {
     "sudo yum install vim mc -y",
     "sudo yum update -y",
     "sudo useradd ansible-user -p ${var.ANSIBLE_PASSWORD}",
-    "sudo sed -i 's/PermitRootLogin forced-commands-only/#PermitRootLogin forced-commands-only/g' /etc/ssh/sshd_config",
-    "sudo sed -i 's/#PermitRootLogin/PermitRootLogin/g' /etc/ssh/sshd_config",
+    "sudo sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config",
     "sudo systemctl reload sshd",
     "sudo cp /tmp/ansible-user-sudoers /etc/sudoers.d",
     "sudo chown root:root /etc/sudoers.d/ansible-user-sudoers",
@@ -90,7 +88,7 @@ provisioner "remote-exec" {
   connection {
     type = "ssh"
     user = "ec2-user"
-    private_key = "${file("~/terraform/.ssh/aws_ec2_Alex")}"
+    private_key = "${file(".ssh/aws_ec2_Alex")}"
     }
   }
 }
@@ -110,7 +108,7 @@ provisioner "file" {
   connection {
     type = "ssh"
     user = "ec2-user"
-    private_key = "${file("~/terraform/.ssh/aws_ec2_Alex")}"
+    private_key = "${file(".ssh/aws_ec2_Alex")}"
     }
 }
 provisioner "remote-exec" {
@@ -120,8 +118,7 @@ provisioner "remote-exec" {
     "sudo yum install vim mc -y",
     "sudo yum update -y",
     "sudo useradd ansible-user -p ${var.ANSIBLE_PASSWORD}",
-    "sudo sed -i 's/PermitRootLogin forced-commands-only/#PermitRootLogin forced-commands-only/g' /etc/ssh/sshd_config",
-    "sudo sed -i 's/#PermitRootLogin/PermitRootLogin/g' /etc/ssh/sshd_config",
+    "sudo sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config",
     "sudo systemctl reload sshd",
     "sudo cp /tmp/ansible-user-sudoers /etc/sudoers.d",
     "sudo chown root:root /etc/sudoers.d/ansible-user-sudoers",
@@ -136,7 +133,7 @@ provisioner "remote-exec" {
   connection {
     type = "ssh"
     user = "ec2-user"
-    private_key = "${file("~/terraform/.ssh/aws_ec2_Alex")}"
+    private_key = "${file(".ssh/aws_ec2_Alex")}"
     }
   }
 }
@@ -156,7 +153,7 @@ provisioner "file" {
   connection {
     type = "ssh"
     user = "ec2-user"
-    private_key = "${file("~/terraform/.ssh/aws_ec2_Alex")}"
+    private_key = "${file(".ssh/aws_ec2_Alex")}"
     }
 }
 provisioner "remote-exec" {
@@ -166,8 +163,7 @@ provisioner "remote-exec" {
     "sudo yum install vim mc -y",
     "sudo yum update -y",
     "sudo useradd ansible-user -p ${var.ANSIBLE_PASSWORD}",
-    "sudo sed -i 's/PermitRootLogin forced-commands-only/#PermitRootLogin forced-commands-only/g' /etc/ssh/sshd_config",
-    "sudo sed -i 's/#PermitRootLogin/PermitRootLogin/g' /etc/ssh/sshd_config",
+    "sudo sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config",
     "sudo systemctl reload sshd",
     "sudo cp /tmp/ansible-user-sudoers /etc/sudoers.d",
     "sudo chown root:root /etc/sudoers.d/ansible-user-sudoers",
@@ -182,7 +178,7 @@ provisioner "remote-exec" {
   connection {
     type = "ssh"
     user = "ec2-user"
-    private_key = "${file("~/terraform/.ssh/aws_ec2_Alex")}"
+    private_key = "${file(".ssh/aws_ec2_Alex")}"
     }
   }
 }
